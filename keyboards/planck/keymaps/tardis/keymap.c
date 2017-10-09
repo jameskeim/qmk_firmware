@@ -29,7 +29,7 @@ enum planck_layers {
   _SPACEFN,
   _GR,
   _GR_S,
-  _MKDN,
+  _QUOTFN,
   _MAUS,
   _ADJUST,
 };
@@ -42,8 +42,8 @@ enum planck_keycodes {
   // see https://www.reddit.com/r/olkb/comments/4x3dei/hack_too_ugly_to_live/?st=j8d81346&sh=416ceb39
   SPACEFN = LT(_SPACEFN, KC_SPC),
   MAUS_K = LT(_MAUS, KC_K),
-  MKDN_QT = LT(_MKDN, KC_QUOT),
-  INTRNAT = LT(_GR, KC_APP),
+  QUOTFN = LT(_QUOTFN, KC_QUOT),
+  INTL = LT(_GR, KC_APP),
   CTL_AD = LALT(LCTL(KC_DEL)),
   M_USERNAME,
   M_VERSION,
@@ -70,9 +70,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_QWERTY] = {
   {KC_GESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC},
-  {CTL_T(KC_TAB),  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    MAUS_K,    KC_L,    KC_SCLN, MKDN_QT},
+  {CTL_T(KC_TAB),  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    MAUS_K,    KC_L,    KC_SCLN, QUOTFN},
   {LSFT_T(KC_GRV), KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, SFT_T(KC_ENT)},
-  {CTL_T(KC_DEL), KC_LGUI, KC_LALT, INTRNAT, LOWER, SPACEFN, SPACEFN, RAISE, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT}
+  {CTL_T(KC_DEL), KC_LGUI, KC_LALT, INTL, LOWER, SPACEFN, SPACEFN, RAISE, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT}
 },
 
 
@@ -261,11 +261,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
  //  return false;
       break;
-    case MKDN_QT:
+    case QUOTFN:
       if (record->event.pressed) {
-        layer_on(_MKDN);
+        layer_on(_QUOTFN);
       } else {
-        layer_off(_MKDN);
+        layer_off(_QUOTFN);
       }
  //  return false;
       break;
@@ -277,7 +277,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
  //     return false;
       break;
-    case INTRNAT:
+    case INTL:
       if (record->event.pressed) {
         layer_on(_GR);
       } else {
