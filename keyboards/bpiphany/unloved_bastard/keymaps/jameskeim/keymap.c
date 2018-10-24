@@ -62,7 +62,7 @@ enum my_keycodes {
 /*
 #include "dynamic_macro.h"
 */
-#define QWERTY DF(0)   /* Switch to QWERTY layout */
+#define QWERTY DF(1)   /* Switch to QWERTY layout */
 /* #define QCENT2 DF(_QCENT2)  Switch to QWERTY-with-centre layout */
 #define USERNAME M(M_USERNAME) /* shortcut for username */
 #define CTLENT MT(MOD_RCTL, KC_ENT)
@@ -71,15 +71,15 @@ enum my_keycodes {
 #define SFTDEL MT(MOD_RSFT, KC_DEL)
 /*#define ALTRIGHT MT(MOD_LALT, KC_RGHT) NO ALT RIGHT IN THIS KEYBOARD! */
 #define MVERSION M(M_VERSION)
-#define MFUNC MO(1)
-#define FN_TAB LT(1, KC_TAB)
-#define SPCFUNC LT(3, KC_SPC)
-#define MADJUST MO(2)
+#define MFUNC MO(2)
+#define FN_TAB LT(2, KC_TAB)
+#define SPCFUNC LT(4, KC_SPC)
+#define MADJUST MO(3)
 #define CTLCAPS CTL_T(KC_CAPS)
 #define MTHINGS M(M_THINGS)
 #define CTLALTD LCTL(LALT(KC_DEL))
 #define MMYKEEB M(M_MYKEEB)
-#define GM_LAYR DF(4)
+#define GM_LAYR DF(0)
 
 
 
@@ -88,43 +88,44 @@ enum my_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [0] = LAYOUT_tkl_ansi(
                 KC_ESC,   KC_F1, KC_F2,  KC_F3,  KC_F4,  KC_F5,  KC_F6,  KC_F7,  KC_F8,  KC_F9,  KC_F10,  KC_F11,  KC_F12,             KC_PSCR, KC_SLCK, KC_PAUS,
+                KC_GRV,   KC_1,   KC_2,   KC_3,   KC_4,   KC_5,   KC_6,   KC_7,   KC_8,   KC_9,   KC_0,   KC_MINS, KC_EQL,  KC_BSPC,   KC_INS,  KC_HOME, KC_PGUP,
+                KC_TAB,   KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,   KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,   KC_LBRC, KC_RBRC, KC_BSLS,   KC_DEL,  KC_END,  KC_PGDN,
+                KC_CAPS,  KC_A,   KC_S,   KC_D,   KC_F,   KC_G,   KC_H,   KC_J,   KC_K,   KC_L,   KC_SCLN,KC_QUOT,           KC_ENT,
+                KC_LSFT,          KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,   KC_N,   KC_M,   KC_COMM,KC_DOT, KC_SLSH,           KC_RSFT,            KC_UP,
+                KC_LCTL,KC_LGUI,KC_LALT,                KC_SPC,                                   KC_RALT,KC_RGUI, MFUNC,   KC_RCTL,   KC_LEFT, KC_DOWN, KC_RGHT),
+
+[1] = LAYOUT_tkl_ansi(
+                KC_ESC,   KC_F1, KC_F2,  KC_F3,  KC_F4,  KC_F5,  KC_F6,  KC_F7,  KC_F8,  KC_F9,  KC_F10,  KC_F11,  KC_F12,             KC_PSCR, KC_SLCK, KC_PAUS,
                 KC_GRV,    KC_1,   KC_2,   KC_3,   KC_4,   KC_5,   KC_6,   KC_7,   KC_8,   KC_9,   KC_0,   KC_MINS, KC_EQL,  KC_BSPC,   KC_INS,  KC_HOME, KC_PGUP,
                 FN_TAB,    KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,   KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,   KC_LBRC, KC_RBRC, KC_BSLS,   KC_DEL,  KC_END,  KC_PGDN,
                 CTLESC,    KC_A,   KC_S,   KC_D,   KC_F,   KC_G,   KC_H,   KC_J,   KC_K,   KC_L,   KC_SCLN,KC_QUOT,           CTLENT,
                 SFTBSPC,           KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,   KC_N,   KC_M,   KC_COMM,KC_DOT, KC_SLSH,           SFTDEL,            KC_UP,
                 KC_LCTL,KC_LGUI,KC_LALT,                SPCFUNC,                         KC_RALT,KC_RGUI, MFUNC,   KC_RCTL,   KC_LEFT, KC_DOWN, KC_RGHT),
 
-[1] = LAYOUT_tkl_ansi(
-                _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,             _______, _______, CTLALTD,
-                _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,    KC_MPLY, KC_MNXT, KC_VOLU,
-                 FN_TAB, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,    KC_MSTP, KC_MPRV, KC_VOLD,
-                _______, _______, MADJUST, _______, _______, _______, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, _______, _______,          _______,
-                _______,          _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,             _______,
-                _______, _______, _______,               KC_ENT,                                          _______, _______,   MFUNC, _______,    _______, _______, _______),
-
 [2] = LAYOUT_tkl_ansi(
-                _______,  QWERTY, GM_LAYR, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,             _______, _______, XXXXXXX,
-                _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,    KC_MPLY, KC_MNXT, KC_VOLU,
-                _______, _______, _______,USERNAME,   RESET, _______, _______, _______, _______, _______, _______, _______, _______, _______,    KC_MSTP, KC_MPRV, KC_VOLD,
-                _______, _______, MADJUST, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
-                _______,          _______, _______, MMYKEEB,MVERSION, _______, _______, _______, _______, _______, _______,          _______,             _______,
-                _______, _______, _______,              KC_SPC,                                           _______, _______,   MFUNC, _______,    _______, _______, _______),
+                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,             XXXXXXX, XXXXXXX, CTLALTD,
+                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    KC_MPLY, KC_MNXT, KC_VOLU,
+                 FN_TAB, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    KC_MSTP, KC_MPRV, KC_VOLD,
+                XXXXXXX, XXXXXXX, MADJUST, XXXXXXX, XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, XXXXXXX, XXXXXXX,          XXXXXXX,
+                XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,             XXXXXXX,
+                XXXXXXX, XXXXXXX, XXXXXXX,               KC_ENT,                                          XXXXXXX, XXXXXXX,   MFUNC, MADJUST,    XXXXXXX, XXXXXXX, XXXXXXX),
 
 [3] = LAYOUT_tkl_ansi(
-                _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,             _______, _______, MTHINGS,
-                 KC_ESC,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12, _______,    KC_MPLY, KC_MNXT, KC_VOLU,
-                _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,    KC_MSTP, KC_MPRV, KC_VOLD,
-                KC_CAPS, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
-                _______,          _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,             _______,
-                _______, _______, _______,              SPCFUNC,                                          _______, _______,   MFUNC, _______,    _______, _______, _______),
- 
+                XXXXXXX, GM_LAYR,  QWERTY, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,             XXXXXXX, XXXXXXX, XXXXXXX,
+                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX,
+                 FN_TAB, XXXXXXX, XXXXXXX, XXXXXXX,   RESET, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX,
+                XXXXXXX, XXXXXXX, MADJUST, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,
+                XXXXXXX,          XXXXXXX, XXXXXXX, MMYKEEB,MVERSION, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,             XXXXXXX,
+                XXXXXXX, XXXXXXX, XXXXXXX,              XXXXXXX,                                           XXXXXXX, XXXXXXX,   MFUNC, MADJUST,    XXXXXXX, XXXXXXX, XXXXXXX),
+
 [4] = LAYOUT_tkl_ansi(
-                KC_ESC,   KC_F1, KC_F2,  KC_F3,  KC_F4,  KC_F5,  KC_F6,  KC_F7,  KC_F8,  KC_F9,  KC_F10,  KC_F11,  KC_F12,             KC_PSCR, KC_SLCK, KC_PAUS,
-                KC_GRV,   KC_1,   KC_2,   KC_3,   KC_4,   KC_5,   KC_6,   KC_7,   KC_8,   KC_9,   KC_0,   KC_MINS, KC_EQL,  KC_BSPC,   KC_INS,  KC_HOME, KC_PGUP,
-                KC_TAB,   KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,   KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,   KC_LBRC, KC_RBRC, KC_BSLS,   KC_DEL,  KC_END,  KC_PGDN,
-                KC_CAPS,  KC_A,   KC_S,   KC_D,   KC_F,   KC_G,   KC_H,   KC_J,   KC_K,   KC_L,   KC_SCLN,KC_QUOT,           KC_ENT,
-                KC_LSFT,          KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,   KC_N,   KC_M,   KC_COMM,KC_DOT, KC_SLSH,           KC_RSFT,            KC_UP,
-                KC_LCTL,KC_LGUI,KC_LALT,                KC_SPC,                                   KC_RALT,KC_RGUI, MFUNC,   KC_RCTL,   KC_LEFT, KC_DOWN, KC_RGHT)
+                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,             _______, _______, MTHINGS,
+                 KC_ESC,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12, XXXXXXX,    KC_MPLY, KC_MNXT, KC_VOLU,
+                XXXXXXX, XXXXXXX, XXXXXXX, USERNAME, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    KC_MSTP, KC_MPRV, KC_VOLD,
+                KC_CAPS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, XXXXXXX, XXXXXXX,          XXXXXXX,
+                XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,             XXXXXXX,
+                XXXXXXX, XXXXXXX, XXXXXXX,              SPCFUNC,                                          XXXXXXX, XXXXXXX,   MFUNC, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX)
+ 
 
 };
 const uint16_t PROGMEM fn_actions[] = {
