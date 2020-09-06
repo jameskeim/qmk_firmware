@@ -1,3 +1,7 @@
+#define LEADER_TIMEOUT 500
+#define LEADER_PER_KEY_TIMING
+
+
 
 // The following redefines the Space Cadet Shift function.
 // Tapping Left Shift outputs "/"
@@ -6,5 +10,3 @@
 #define RSPC_KEYS KC_LSFT, KC_RSFT, KC_SLSH
 
 
-#define LEADER_PER_KEY_TIMING
-#define LEADER_TIMEOUT 300
