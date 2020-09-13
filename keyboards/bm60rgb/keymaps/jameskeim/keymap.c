@@ -293,7 +293,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   	switch(keycode) {
     case MUSERNAME:
       	if (record->event.pressed) {
-        	SEND_STRING("email@jameskeim.com");
+        	SEND_STRING("email");
         } else {
         // When MUSERNAME is released    
         }
